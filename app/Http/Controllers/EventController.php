@@ -39,7 +39,7 @@ class EventController extends Controller
         return response()->json([
             'status' => 'success',
             'data' => $event
-        ],200);
+        ], 200);
     }
 
     /**
@@ -51,16 +51,17 @@ class EventController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'data'=> $event
-        ],200);
+            'data' => $event
+        ], 200);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event, $id)
+    public function update(Request $request, Event $event)
     {
-        $request-> validate([
+        //En este bloque como estamos realizando una actualizacion, requerimos nuevamente tener las validaciones para cada campo
+        $request->validate([
             'name' => 'required|string|max:30',
             'description' => 'nullable|string|max:100',
             'date' => 'required|date',
@@ -68,15 +69,14 @@ class EventController extends Controller
             'location' => 'required|max:100'
         ]);
 
-        $event -> update($request->all());
+
+        $event->update($request->all()); //Este metodo nos permiite actualizar un dato
 
         return response()->json([
             'status' => 'success',
             'message' => 'Evento actualizado correctamente',
             'data' => $event
         ], 200);
-
-
     }
 
     /**
@@ -84,6 +84,13 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+
+        $event->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Evento eliminado exitosamente',
+            'data' => $event
+        ], 200);
     }
 }
