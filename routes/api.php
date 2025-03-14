@@ -13,4 +13,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::apiResource('events', EventController::class);
-Route::get('/external-reservations', [ExternalApiController::class, 'getReservations']);
+Route::get('/external-reservations', [ExternalApiController::class, 'getReservations']); //Ruta para el consumo del api de cristian
