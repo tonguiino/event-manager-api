@@ -57,6 +57,20 @@ class ExternalApiController extends Controller
         ], 200);
     } 
 
+    public function createUser(Request $request)//Metodo utilizado para pablo
+    {
 
-    
+        $response = Http::post('http://127.0.0.1:8082/api/userservice', [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $response->json()
+        ], 201);
+
+
+    }
 }

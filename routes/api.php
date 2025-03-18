@@ -18,3 +18,4 @@ Route::post('/external-reservations', [ExternalApiController::class, 'createRese
 
 
 Route::get('/external-userservice', [ExternalApiController::class, 'getUsers']);//Ruta para el consumo del api de pablo metodo get
+Route::post('/external-userservice', [ExternalApiController::class, 'createUser']);//Ruta para el consumo del api de pablo metodo post
