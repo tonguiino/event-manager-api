@@ -20,21 +20,7 @@ class ExternalApiController extends Controller
         ], 200);
     }
 
-    public function getUsers()
-    {
-
-        $response = Http::get('http://127.0.0.1:8082/api/reservas'); //Api consumida de pablo
-
-
-        //Toma la respuesta del api y la retorna para mostrarla
-        return response()->json([
-            'status' => 'success',
-            'data' => $response->json()
-        ], 200);
-    } //Metodo utilizado para pablo
-
-
-
+//metodo para crear un evento api-consumida de cristian
     public function createReserva(Request $request)
     {
 
@@ -55,4 +41,21 @@ class ExternalApiController extends Controller
             'data' => $response->json()
         ], 201);
     }
+
+    
+
+    public function getUsers()//Metodo utilizado para pablo
+    {
+
+        $response = Http::get('http://127.0.0.1:8082/api/userservice'); //Api consumida de pablo
+
+
+        //Toma la respuesta del api y la retorna para mostrarla
+        return response()->json([
+            'status' => 'success',
+            'data' => $response->json()
+        ], 200);
+    } 
+
+
 }
